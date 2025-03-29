@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Maps2</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="seekbar_nivel">nivel</string>
+    <string name="textview_nivel_rio">Nível da água</string>
+    <string name="textview_nivel_resultado">0cm</string>
 </resources>
