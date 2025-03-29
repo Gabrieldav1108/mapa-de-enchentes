@@ -3,6 +3,7 @@ package com.example.maps2;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Maps extends AppCompatActivity {
     SeekBar seekBar;
+    TextView textViewWaterLevel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +32,12 @@ public class Maps extends AppCompatActivity {
         });
 
         seekBar = findViewById(R.id.seekBar);
+        textViewWaterLevel = findViewById(R.id.textViewWaterLevel);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                Log.d("Nivel", progress+"");
+                textViewWaterLevel.setText(String.valueOf(progress)+"cm");
             }
 
             @Override
