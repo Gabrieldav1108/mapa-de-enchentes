@@ -39,6 +39,7 @@ public class Maps extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
                 textViewWaterLevel.setText(String.valueOf(progress)+"cm");
             }
+            //
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
