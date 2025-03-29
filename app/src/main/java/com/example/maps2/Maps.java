@@ -37,7 +37,9 @@ public class Maps extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
-                textViewWaterLevel.setText(String.valueOf(progress)+"cm");
+                double fVal = getConvertedValue(progress);
+                String result = String.format("%.2f", fVal);
+                textViewWaterLevel.setText(result+"m");
             }
             //
 
@@ -51,6 +53,12 @@ public class Maps extends AppCompatActivity {
 
             }
         });
+    }
+    //metodo para converter o progresso do seekBar para decimal
+    public double getConvertedValue(int intVal){
+        double floatVal = 0.0;
+        floatVal = .10f * intVal;
+        return floatVal;
     }
 
 
