@@ -2,10 +2,12 @@ package com.example.maps2;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -14,11 +16,14 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.maps2.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Maps extends AppCompatActivity {
+public class Maps extends AppCompatActivity implements OnMapReadyCallback {
     SeekBar seekBar;
+    GoogleMap mMap;
     TextView textViewWaterLevel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +35,13 @@ public class Maps extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map2);
+        mapFragment.getMapAsync(this);
 
         seekBar = findViewById(R.id.seekBar);
         textViewWaterLevel = findViewById(R.id.textViewWaterLevel);
+
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -61,5 +70,10 @@ public class Maps extends AppCompatActivity {
         return floatVal;
     }
 
-
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        LatLng rolante = new LatLng(-29.64721, -50.57048);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(rolante, 14));
+    }
 }
