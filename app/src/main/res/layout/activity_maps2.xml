@@ -21,7 +21,7 @@
             android:id="@+id/map2"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="502dp"
+            android:layout_height="594dp"
             tools:context=".Maps"
 
             />
